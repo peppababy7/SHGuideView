@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'SHGuideView_Example' do
+  pod 'SHGuideView', :path => '../'
+
+end
