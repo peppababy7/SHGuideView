@@ -42,28 +42,28 @@ Just need set imageName and page count, then implement block functionality using
 Please rename your guide image with format:
 
 e.g.
-yourImageName == 'Guide'
-yourImageTotalCount == 3
+    yourImageName == 'Guide'
+    yourImageTotalCount == 3
 
-your guide image with IPhone4S resolution:
-Please rename your image with  :   'Guide_IPhone4S_1'
-Please rename your image with  :   'Guide_IPhone4S_2'
-Please rename your image with  :   'Guide_IPhone4S_3'
+    your guide image with IPhone4S resolution:
+    Please rename your image with  :  'Guide_IPhone4S_1'
+    Please rename your image with  :  'Guide_IPhone4S_2'
+    Please rename your image with  :  'Guide_IPhone4S_3'
 
-your guide image with IPhone5 resolution
-Please rename your image with  :   'Guide_IPhone5_1'
-Please rename your image with  :   'Guide_IPhone5_2'
-Please rename your image with  :   'Guide_IPhone5_3'
+    your guide image with IPhone5 resolution
+    Please rename your image with  :  'Guide_IPhone5_1'
+    Please rename your image with  :  'Guide_IPhone5_2'
+    Please rename your image with  :  'Guide_IPhone5_3'
 
-your guide image with IPhone6 resolution
-Please rename your image with  :   'Guide_IPhone6_1'
-Please rename your image with  :   'Guide_IPhone6_2'
-Please rename your image with  :   'Guide_IPhone6_3'
+    your guide image with IPhone6 resolution
+    Please rename your image with  :  'Guide_IPhone6_1'
+    Please rename your image with  :  'Guide_IPhone6_2'
+    Please rename your image with  :  'Guide_IPhone6_3'
 
-your guide image with IPhone6P resolution
-Please rename your image with  :   'Guide_IPhone6P_1'
-Please rename your image with  :   'Guide_IPhone6P_2'
-Please rename your image with  :   'Guide_IPhone6P_3'
+    your guide image with IPhone6P resolution
+    Please rename your image with  :  'Guide_IPhone6P_1'
+    Please rename your image with  :  'Guide_IPhone6P_2'
+    Please rename your image with  :  'Guide_IPhone6P_3'
 
 ----------------------------*/
 
