@@ -41,7 +41,7 @@ Just need set imageName and page count, then implement block functionality using
 
 Please rename your guide image with format:
 
-e.g.
+    e.g.
     yourImageName == 'Guide'
     yourImageTotalCount == 3
 
