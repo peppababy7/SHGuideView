@@ -33,8 +33,6 @@ and run `pod install`, then you're all done!
 
 ## Summary
 
-/*--------------------------
-
 A simple guide viewController.
 
 Just need set imageName and page count, then implement block functionality using your code please.
@@ -65,8 +63,6 @@ Please rename your guide image with format:
     Please rename your image with  :  'Guide_IPhone6P_2'
     Please rename your image with  :  'Guide_IPhone6P_3'
 
-----------------------------*/
-
 ## Requirements
 
 * iOS 8.0+ 
@@ -78,5 +74,5 @@ Please rename your guide image with format:
 
 ## License
 
-English: SHTabbarController is available under the MIT license, see the LICENSE file for more information.     
+English: SHGuideView is available under the MIT license, see the LICENSE file for more information.     
 

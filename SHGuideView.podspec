@@ -11,7 +11,7 @@ s.name             = 'SHGuideView'
 s.version          = '0.1.0'
 s.summary          = 'A simple custom GuideView.'
 s.homepage         = 'https://github.com/harushuu/SHGuideView'
-# s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+s.screenshots      = 'https://github.com/harushuu/SHGuideView/raw/master/Screenshots.gif'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { '@harushuu' => 'hunter4n@gmail.com' }
 s.source           = { :git => 'https://github.com/harushuu/SHGuideView.git', :tag => '0.1.0' }
