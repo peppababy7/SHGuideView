@@ -5,15 +5,38 @@
 //  Created by shuu on 7/2/16.
 //  Copyright (c) 2016 @harushuu. All rights reserved.
 //
+// The MIT License (MIT)
+//
+// Copyright (c) 2016 @harushuu
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of
+// this software and associated documentation files (the "Software"), to deal in
+// the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 #import "SHGuideViewController.h"
 #import "SHScorllView.h"
+#import <SHButton/SHButton.h>
 #import <Masonry/Masonry.h>
-#import <BFPaperButton/BFPaperButton.h>
 
 #define IPHONE5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define IPHONE6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size)) : NO)
 #define IPHONE6P ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 @interface SHGuideViewController () <UIScrollViewDelegate>
 @property (nonatomic, assign) BOOL didSetupConstraint;
@@ -33,6 +56,9 @@
         [self setupImageNameArrayWithImageName:imageName guidePage:page];
         if (completeHandle) {
             self.completeHandle = completeHandle;
+            self.comfirmButtonCornerRadius = 3.f;
+            self.pageIndicatorBottom = 30.f;
+            self.confirmButtonBottom = 70.f;
         }
     }
     return self;
@@ -69,7 +95,7 @@
         }];
         [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(superView);
-            make.bottom.equalTo(superView).with.offset(-30);
+            make.bottom.equalTo(superView).with.offset(-self.pageIndicatorBottom);
         }];
     }
     [super updateViewConstraints];
@@ -95,13 +121,13 @@
     for (int i = 1; i <= page; i++) {
         NSString *deviceModel;
         if (IPHONE5) {
-            deviceModel = [NSString stringWithFormat:@"%@_IPhone5_", imageName];
+            deviceModel = [NSString stringWithFormat:@"%@_iPhone5_", imageName];
         } else if (IPHONE6) {
-            deviceModel = [NSString stringWithFormat:@"%@_IPhone6_", imageName];
+            deviceModel = [NSString stringWithFormat:@"%@_iPhone6_", imageName];
         } else if (IPHONE6P) {
-            deviceModel = [NSString stringWithFormat:@"%@_IPhone6P_", imageName];
+            deviceModel = [NSString stringWithFormat:@"%@_iPhone6P_", imageName];
         } else {
-            deviceModel = [NSString stringWithFormat:@"%@_IPhone4S_", imageName];
+            deviceModel = [NSString stringWithFormat:@"%@_iPhone4S_", imageName];
         }
         deviceModel = [NSString stringWithFormat:@"%@%d", deviceModel, i];
         [self.imageNameArray addObject:deviceModel];
@@ -121,22 +147,29 @@
         }];
         lastImageView = imageView;
         if (i == self.imageNameArray.count) {
-            BFPaperButton *startButton = [SHGuideViewController setBFPaperButtonWithTitle:self.comfirmButtonTitle titleColor:self.comfirmButtonTitleColor fontSize:15.f backgrondColor:self.comfirmButtonTintColor cornerRadius:3.f];
-            [startButton addTarget:self action:@selector(startButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            [self.scrollView addSubview:startButton];
-            [startButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(imageView).with.offset(-70);
-                make.left.equalTo(imageView).with.offset(50);
-                make.right.equalTo(imageView).with.offset(-50);
-                make.height.mas_equalTo(44);
+            if (!self.userComfirmButton) {
+                self.userComfirmButton = [SHGuideViewController setSHButtonWithTitle:self.comfirmButtonTitle titleColor:self.comfirmButtonTitleColor fontSize:15.f backgrondColor:self.comfirmButtonTintColor cornerRadius:self.comfirmButtonCornerRadius];
+            }
+            [self.userComfirmButton addTarget:self action:@selector(startButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+            [self.scrollView addSubview:self.userComfirmButton];
+            [self.userComfirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(self.userComfirmButton.bounds.size.height ? : 44);
+                if (!self.userComfirmButton.bounds.size.width) {
+                    make.left.equalTo(imageView).with.offset(50);
+                    make.right.equalTo(imageView).with.offset(-50);
+                } else {
+                    CGFloat widthOffset = (SCREEN_WIDTH - self.userComfirmButton.bounds.size.width) * 0.5;
+                    make.left.equalTo(imageView).with.offset(widthOffset);
+                    make.right.equalTo(imageView).with.offset(-widthOffset);
+                }
+                make.bottom.equalTo(imageView).with.offset(-self.confirmButtonBottom);
             }];
         }
     }
 }
 
-+ (BFPaperButton *)setBFPaperButtonWithTitle:(NSString *)title titleColor:(UIColor *)titleColor fontSize:(CGFloat)fontSize backgrondColor:(UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius {
-    BFPaperButton *button = [[BFPaperButton alloc] init];
-    button.shadowColor = [UIColor clearColor];
++ (SHButton *)setSHButtonWithTitle:(NSString *)title titleColor:(UIColor *)titleColor fontSize:(CGFloat)fontSize backgrondColor:(UIColor *)backgroundColor cornerRadius:(CGFloat)cornerRadius {
+    SHButton *button = [[SHButton alloc] init];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:titleColor forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
@@ -154,7 +187,9 @@
     if (self.completeHandle) self.completeHandle();
 }
 
-# pragma mark - default
+#pragma mark - Setup Custom Property
+
+#pragma mark - Default Property
 
 - (UIColor *)pageIndicatorTintColor {
     if (!_pageIndicatorTintColor) {

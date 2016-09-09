@@ -1,11 +1,9 @@
 PODS:
-  - BFPaperButton (2.0.29):
-    - UIColor+BFPaperColors
   - Masonry (0.6.4)
-  - SHGuideView (0.1.0):
-    - BFPaperButton (~> 2.0.29)
+  - SHButton (0.1.9)
+  - SHGuideView (0.1.1):
     - Masonry (~> 0.6.4)
-  - UIColor+BFPaperColors (1.7.2)
+    - SHButton (~> 0.1.9)
 
 DEPENDENCIES:
   - SHGuideView (from `../`)
@@ -15,10 +13,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BFPaperButton: 7df738f2e749a9a4edd3e043f0621ee02215e417
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
-  SHGuideView: 82525acecfbaf0870683faa43ca4dca77aa16187
-  UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
+  SHButton: 7f73c7a633fa427fb847aa0427719f102a8dc558
+  SHGuideView: 12814ce3cedf1414311e30fec466cd23e2e8463f
 
 PODFILE CHECKSUM: 1305ba48e5503b1ffdd5d0e553394af279f4a0ca
 

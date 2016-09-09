@@ -8,18 +8,18 @@
 
 Pod::Spec.new do |s|
 s.name             = 'SHGuideView'
-s.version          = '0.1.0'
+s.version          = '0.1.1'
 s.summary          = 'A simple custom GuideView.'
 s.homepage         = 'https://github.com/harushuu/SHGuideView'
 s.screenshots      = 'https://github.com/harushuu/SHGuideView/raw/master/Screenshots.gif'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { '@harushuu' => 'hunter4n@gmail.com' }
-s.source           = { :git => 'https://github.com/harushuu/SHGuideView.git', :tag => '0.1.0' }
+s.source           = { :git => 'https://github.com/harushuu/SHGuideView.git', :tag => s.version }
 s.platform     = :ios, '8.0'
 s.requires_arc = true
 s.source_files = 'SHGuideView/*'
 s.frameworks = 'UIKit'
-s.dependency 'BFPaperButton', '~> 2.0.29'
+s.dependency 'SHButton', '~> 0.1.9'
 s.dependency 'Masonry', '~> 0.6.4'
 
 end

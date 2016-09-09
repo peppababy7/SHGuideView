@@ -13,7 +13,7 @@
 With [CocoaPods](http://cocoapods.org/), add this line to your `Podfile`.
 
 ```
-pod 'SHGuideView'
+pod 'SHGuideView', '~> 0.1.1'
 ```
 
 and run `pod install`, then you're all done!
@@ -39,29 +39,62 @@ Just need set imageName and page count, then implement block functionality using
 
 Please rename your guide image with format:
 
-    e.g.
-    yourImageName == 'Guide'
-    yourImageTotalCount == 3
+###e.g.
+yourImageName == 'Guide'
+yourImageTotalCount == 3
 
-    your guide image with IPhone4S resolution:
-    Please rename your image with  :  'Guide_IPhone4S_1'
-    Please rename your image with  :  'Guide_IPhone4S_2'
-    Please rename your image with  :  'Guide_IPhone4S_3'
+your guide image with iPhone4S resolution:
+Please rename your image with  :   'Guide_iPhone4S_1'
+Please rename your image with  :   'Guide_iPhone4S_2'
+Please rename your image with  :   'Guide_iPhone4S_3'
 
-    your guide image with IPhone5 resolution
-    Please rename your image with  :  'Guide_IPhone5_1'
-    Please rename your image with  :  'Guide_IPhone5_2'
-    Please rename your image with  :  'Guide_IPhone5_3'
+your guide image with iPhone5 resolution
+Please rename your image with  :   'Guide_iPhone5_1'
+Please rename your image with  :   'Guide_iPhone5_2'
+Please rename your image with  :   'Guide_iPhone5_3'
 
-    your guide image with IPhone6 resolution
-    Please rename your image with  :  'Guide_IPhone6_1'
-    Please rename your image with  :  'Guide_IPhone6_2'
-    Please rename your image with  :  'Guide_IPhone6_3'
+your guide image with iPhone6 resolution
+Please rename your image with  :   'Guide_iPhone6_1'
+Please rename your image with  :   'Guide_iPhone6_2'
+Please rename your image with  :   'Guide_iPhone6_3'
 
-    your guide image with IPhone6P resolution
-    Please rename your image with  :  'Guide_IPhone6P_1'
-    Please rename your image with  :  'Guide_IPhone6P_2'
-    Please rename your image with  :  'Guide_IPhone6P_3'
+your guide image with iPhone6P resolution
+Please rename your image with  :   'Guide_iPhone6P_1'
+Please rename your image with  :   'Guide_iPhone6P_2'
+Please rename your image with  :   'Guide_iPhone6P_3'
+```
+
+###custom
+
+// default color is lightGrayColor
+@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
+
+// default color is darkGrayColor
+@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
+
+// default color is lightGrayColor
+@property (nonatomic, strong) UIColor *comfirmButtonTintColor;
+
+// default color is whiteColor
+@property (nonatomic, strong) UIColor *comfirmButtonTitleColor;
+
+// default title is @"Start"
+@property (nonatomic, strong) NSString *comfirmButtonTitle;
+
+// default cornerRadius is 3.f;
+@property (nonatomic, assign) CGFloat comfirmButtonCornerRadius;
+
+// default is 70.f; distacen screen bottom from confirmButtonBottom;
+@property (nonatomic, assign) CGFloat confirmButtonBottom;
+
+// default is 30.f; distance screen bottom from pageIndicatorBottom;
+@property (nonatomic, assign) CGFloat pageIndicatorBottom;
+
+//
+// if above property can not satisfies you, please complete custom comfirm button;
+//
+@property (nonatomic, strong) UIButton *userComfirmButton;
+```
 
 ## Requirements
 

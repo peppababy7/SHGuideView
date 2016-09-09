@@ -7,7 +7,7 @@
 //
 
 #import "SHAppDelegate.h"
-#import "SHGuideViewController.h"
+#import <SHGuideView/SHGuideViewController.h>
 #import "SHViewController.h"
 
 @implementation SHAppDelegate
@@ -27,6 +27,8 @@
         SHGuideViewController *guideViewController = [[SHGuideViewController alloc] initWithImageName:@"Guide" guidePage:3 completeHandle:^{
             [self pushMainViewController];
         }];
+        guideViewController.userComfirmButton = [[UIButton alloc] init];
+        guideViewController.userComfirmButton.bounds = CGRectMake(0, 0, 100, 100);
         [UIView transitionWithView:[[[UIApplication sharedApplication] delegate] window] duration:0.4 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             BOOL oldState = [UIView areAnimationsEnabled];
             [UIView setAnimationsEnabled:NO];
