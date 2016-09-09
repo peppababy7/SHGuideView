@@ -40,6 +40,7 @@ Just need set imageName and page count, then implement block functionality using
 Please rename your guide image with format:
 
 ###e.g.
+```
 yourImageName == 'Guide'
 yourImageTotalCount == 3
 
@@ -65,7 +66,7 @@ Please rename your image with  :   'Guide_iPhone6P_3'
 ```
 
 ###custom
-
+```
 // default color is lightGrayColor
 @property (nonatomic, strong) UIColor *pageIndicatorTintColor;
 
